@@ -47,7 +47,7 @@ describe("BoardService", () => {
       .play(1,1).history.length
     ).toThrowError();
   })
-
+  
   it("white is playing the second move", () => {
     expect(
       bs.initBoard(9).at(2,2).state
