@@ -1,1 +1,3 @@
-export * from "./board.service";
+import BoardService from "./board.service";
+
+export default BoardService;
