@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "",
   "private": true,
-  "main": "dist/index.js",
+  "main": "dist/bundle.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "karma start --single-run",
