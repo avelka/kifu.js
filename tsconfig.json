@@ -6,7 +6,7 @@
       "sourceMap": true,
       "noImplicitAny": false,
       "lib": ["es2017", "dom"],
-      "module": "esnext",
+      "module": "CommonJS",
       "declaration": true,
       "target": "es2015",
       "strict": true
