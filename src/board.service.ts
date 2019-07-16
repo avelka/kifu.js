@@ -4,7 +4,7 @@ import RuleService from "./rule.service";
 class BoardService {
   board: any = [];
   ruleService = new RuleService();
-  history = [];
+  history: any[] = [];
   constructor() {
 
   }
@@ -17,7 +17,7 @@ class BoardService {
 
   createPoint = (x, y, state = null) => ({ state: state, order: 0 });
   line = s => Array(s).fill('');
-  at = (x, y): Move | null => this.board[x][y];
+  at = (x, y): Move => this.board[x][y];
 
   play(x, y, order = this.history.length) {
     const validState = this.ruleService.validate(this.board, {

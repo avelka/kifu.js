@@ -5,7 +5,7 @@ declare class RuleService {
     adjacent(board: any, move: any): any[];
     group(board: any, point: Move, queue?: Move[], visited?: Set<unknown>): Move[];
     sliberties(board: any, move: Move): Move[];
-    liberties(board: any, move: Move, cap?: any): Move[];
+    liberties(board: any, move: Move, cap?: Move): Move[];
     captured(board: any, move: Move): Move[][];
 }
 export default RuleService;

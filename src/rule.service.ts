@@ -68,7 +68,7 @@ class RuleService {
         return this.adjacent(board, move).filter(i => !i.state);
     }
 
-    liberties(board, move: Move, cap = null): Move[] {
+    liberties(board, move: Move, cap?: Move): Move[] {
         return Array.from(
             new Set(
                 this.group(board, move)

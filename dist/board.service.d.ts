@@ -6,8 +6,8 @@ declare class BoardService {
     history: any[];
     constructor();
     init(size: any): this;
-    createPoint: (x: any, y: any, state?: any) => {
-        state: any;
+    createPoint: (x: any, y: any, state?: null) => {
+        state: null;
         order: number;
     };
     line: (s: any) => any[];
