@@ -11,34 +11,36 @@ class RuleService {
         };
         const isKoProtected = m => game[m.x][m.y].state === State.KO
         const isFree = m => !game[m.x][m.y].state;
-        const valid = m => isFree(m) && (isCapturing(m) || hasLiberties(m)) && !isKoProtected(m);
+        const valid = m => isFree(m) && (isCapturing(m) || hasLiberties(m)) && !isKoProtected(m);
         const isKoSituation = m => m.captured.length === 1 && !this.liberties(nextState, m).length;
-        
+
         if (valid(mv)) {
             nextState = this.resetKo(nextState);
             nextState[mv.x][mv.y] = mv;
             const captured = this.captured(nextState, mv).reduce((c, i) => c.concat(i), []);
             nextState[mv.x][mv.y].captured = captured.slice();
-            
+
             if (isKoSituation(mv)) {
                 nextState[captured[0].x][captured[0].y].state = State.KO;
             }
-            
+
             return captured.reduce((p, c) => {
-                p[c.x][c.y].state = c.state === State.KO 
+                p[c.x][c.y].state = c.state === State.KO
                     ? State.KO : null;
                 return p;
             }, nextState);
-        } 
+        }
         throw new Error(`${mv.x}:${mv.y} was not a valid move (${game[mv.x][mv.y].state})`);
     }
+
     resetKo(state) {
         return state.map(l => l.map(p => {
-           p.state = p.state == State.KO ? null : p.state; 
-           return p; 
+            p.state = p.state == State.KO ? null : p.state;
+            return p;
         }))
-        
+
     }
+
     adjacent(board, move) {
         const end = board.length;
         const start = 0;
