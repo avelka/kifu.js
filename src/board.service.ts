@@ -1,4 +1,4 @@
-import {State, Move } from "./models";
+import { State, Move } from "./models";
 import RuleService from "./rule.service";
 
 class BoardService {
@@ -15,11 +15,12 @@ class BoardService {
     return this;
   }
 
-  createPoint = (x, y, state = null) => ({ state: state, order: 0 });
-  line = s => Array(s).fill('');
-  at = (x, y): Move => this.board[x][y];
+  createPoint = (x: number, y: number, state = null) => ({ state: state, order: 0 });
 
-  play(x, y, order = this.history.length) {
+  line = (s: number) => Array(s).fill('');
+  at = (x: number, y: number): Move => this.board[x][y];
+
+  play(x: number, y: number, order = this.history.length) {
     const validState = this.ruleService.validate(this.board, {
       state: order % 2 ? State.WHITE : State.BLACK,
       order: order,
@@ -34,7 +35,7 @@ class BoardService {
     return this;
   }
 
-  libertiesAt(x, y): number {
+  libertiesAt(x: number, y: number): number {
     const m = this.at(x, y);
     return m ? this.ruleService.liberties(this.board, m).length : 0;
   }

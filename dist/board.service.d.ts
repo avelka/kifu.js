@@ -6,14 +6,14 @@ declare class BoardService {
     history: any[];
     constructor();
     init(size: any): this;
-    createPoint: (x: any, y: any, state?: null) => {
+    createPoint: (x: number, y: number, state?: null) => {
         state: null;
         order: number;
     };
-    line: (s: any) => any[];
-    at: (x: any, y: any) => Move;
-    play(x: any, y: any, order?: number): this;
-    libertiesAt(x: any, y: any): number;
+    line: (s: number) => any[];
+    at: (x: number, y: number) => Move;
+    play(x: number, y: number, order?: number): this;
+    libertiesAt(x: number, y: number): number;
     show(): void;
 }
 export default BoardService;
