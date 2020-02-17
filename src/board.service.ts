@@ -44,6 +44,6 @@ export default class BoardService {
 
   show() {
     // 
-    console.log(this.board.map(l => l.map(p => p.state ? p.state : '')));
+    console.log(this.board.map((l: any) => l.map((p: any) => p.state ? p.state : '')));
   }
 }
