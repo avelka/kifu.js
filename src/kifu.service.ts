@@ -5,7 +5,7 @@ export default class KifuService {
 
     }
 
-    read(svg) {
+    read(svg: any) {
         const [[[meta, ...game]]] = sgfgrove.parse(svg);
         const { PB, PW, BR, WR, SZ, KM, RU, GN, CP, US, AN, ...rest } = meta;
         return {
