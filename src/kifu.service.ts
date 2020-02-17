@@ -1,4 +1,4 @@
-import * as sgfgrove from 'sgfgrove'
+import sgfgrove from 'sgfgrove'
 import { BLACK, WHITE } from './models';
 export default class KifuService {
     constructor() {
