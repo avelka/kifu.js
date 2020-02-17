@@ -1,15 +1,17 @@
 import { State, Move } from "./models";
 import RuleService from "./rule.service";
+import KifuService from "./kifu.service";
 
 class BoardService {
   board: any = [];
   ruleService = new RuleService();
+  kifuService = new KifuService();
   history: any[] = [];
   constructor() {
 
   }
 
-  init(size) {
+  init(size: number) {
     this.history = [];
     this.board = this.line(size).map((_, x) => this.line(size)).map((_, x) => _.map((_, y) => this.createPoint(x, y)));
     return this;

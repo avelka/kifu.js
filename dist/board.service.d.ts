@@ -1,11 +1,13 @@
 import { Move } from "./models";
 import RuleService from "./rule.service";
+import KifuService from "./kifu.service";
 declare class BoardService {
     board: any;
     ruleService: RuleService;
+    kifuService: KifuService;
     history: any[];
     constructor();
-    init(size: any): this;
+    init(size: number): this;
     createPoint: (x: number, y: number, state?: null) => {
         state: null;
         order: number;

@@ -1,10 +1,11 @@
 {
   "name": "kifu",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "private": true,
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "karma start --single-run",
     "test:watch": "karma start",
