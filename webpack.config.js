@@ -8,7 +8,7 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 300,
     poll: 1000,
-    ignored: ['files/**/*.js', 'node_modules']
+    ignored: ['node_modules']
   },
   module: {
     rules: [
