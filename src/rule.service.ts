@@ -1,6 +1,6 @@
 import { Move, State } from "./models";
 
-class RuleService {
+export default class RuleService {
     validate(game, mv: Move) {
         let nextState = [...game.slice()];
         const hasLiberties = m => this.liberties(nextState, m).length;
@@ -89,4 +89,3 @@ class RuleService {
             .map(c => this.group(board, c));
     }
 }
-export default RuleService;

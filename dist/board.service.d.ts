@@ -1,7 +1,7 @@
 import { Move } from "./models";
 import RuleService from "./rule.service";
 import KifuService from "./kifu.service";
-declare class BoardService {
+export default class BoardService {
     board: any;
     ruleService: RuleService;
     kifuService: KifuService;
@@ -18,4 +18,3 @@ declare class BoardService {
     libertiesAt(x: number, y: number): number;
     show(): void;
 }
-export default BoardService;

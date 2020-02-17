@@ -2,7 +2,7 @@ import { State, Move } from "./models";
 import RuleService from "./rule.service";
 import KifuService from "./kifu.service";
 
-class BoardService {
+export default class BoardService {
   board: any = [];
   ruleService = new RuleService();
   kifuService = new KifuService();
@@ -47,5 +47,3 @@ class BoardService {
     console.log(this.board.map(l => l.map(p => p.state ? p.state : '')));
   }
 }
-
-export default BoardService;

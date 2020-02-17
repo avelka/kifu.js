@@ -1,4 +1,4 @@
-declare class KifuService {
+export default class KifuService {
     constructor();
     read(svg: any): {
         players: {
@@ -21,4 +21,3 @@ declare class KifuService {
         game: any;
     };
 }
-export default KifuService;

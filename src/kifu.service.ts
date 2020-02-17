@@ -1,6 +1,6 @@
 import * as sgfgrove from 'sgfgrove'
 import { BLACK, WHITE } from './models';
-class KifuService {
+export default class KifuService {
     constructor() {
 
     }
@@ -29,5 +29,3 @@ class KifuService {
         };
     }
 }
-
-export default KifuService;

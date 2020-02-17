@@ -1,5 +1,5 @@
 import { Move } from "./models";
-declare class RuleService {
+export default class RuleService {
     validate(game: any, mv: Move): any[];
     resetKo(state: any): any;
     adjacent(board: any, move: any): any[];
@@ -8,4 +8,3 @@ declare class RuleService {
     liberties(board: any, move: Move, cap?: Move): Move[];
     captured(board: any, move: Move): Move[][];
 }
-export default RuleService;
