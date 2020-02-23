@@ -5,9 +5,9 @@ export default class KifuService {
 
     }
 
-    read(svg: any) {
-        const [[[meta, ...game]]] = sgfgrove.parse(svg);
-        const { PB, PW, BR, WR, SZ, KM, RU, GN, CP, US, AN, ...rest } = meta;
+    read(sgf: any) {
+        const [[[meta, ...game]]] = sgfgrove.parse(sgf);
+        const { PB, PW, BR, WR, SZ, KM, RU, GN, CP, US, AN, TM, OT, RE, DT, ...rest } = meta;
         return {
             players: [
                 { color: BLACK, name: PB, level: BR },
@@ -17,12 +17,16 @@ export default class KifuService {
                 size: SZ,
                 komi: KM,
                 rule: RU,
+                time: TM,
+                overtime: OT
             },
             meta: {
                 name: GN,
                 copyright: CP,
                 scribe: US,
-                commentator: AN
+                commentator: AN,
+                result: RE,
+                date: DT
             },
             rest,
             game
