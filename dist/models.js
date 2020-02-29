@@ -10,10 +10,17 @@ export const NEXT = "next";
 export const PREV = "prev";
 export const END = "end_game";
 export const START = "start_game";
-export var State;
-(function (State) {
-    State["BLACK"] = "black";
-    State["WHITE"] = "white";
-    State["KO"] = "ko";
-})(State || (State = {}));
+export var BoardState;
+(function (BoardState) {
+    BoardState["BLACK"] = "black";
+    BoardState["WHITE"] = "white";
+    BoardState["KO"] = "ko";
+})(BoardState || (BoardState = {}));
+export var OverlayState;
+(function (OverlayState) {
+    OverlayState["TRIANGLE"] = "triangle";
+    OverlayState["CIRCLE"] = "circle";
+    OverlayState["SQUARE"] = "square";
+    OverlayState["LABEL"] = "label";
+})(OverlayState || (OverlayState = {}));
 //# sourceMappingURL=models.js.map

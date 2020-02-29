@@ -5,20 +5,19 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "strict": true,
-    "noImplicitReturns": true,
-    "moduleResolution": "node",
-    "stripInternal": false,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "experimentalDecorators": true,
     "lib": [
-      "esnext",
-      "dom"
+      "dom",
+      "es2017",
     ],
-    "target": "esnext",
-    "baseUrl": ".",
-    "paths": {
-      "*": [
-        "types/*"
-      ]
-    },
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "outDir": "./dist/",
   },
   "include": [

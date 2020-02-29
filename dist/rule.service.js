@@ -1,4 +1,4 @@
-import { State } from "./models";
+import { BoardState } from "./models";
 export default class RuleService {
     validate(game, mv) {
         let nextState = [...game.slice()];
@@ -8,7 +8,7 @@ export default class RuleService {
             next[mv.x][mv.y] = mv;
             return this.captured(next, m).length;
         };
-        const isKoProtected = (m) => game[m.x][m.y].state === State.KO;
+        const isKoProtected = (m) => game[m.x][m.y].state === BoardState.KO;
         const isFree = (m) => !game[m.x][m.y].state;
         const valid = (m) => isFree(m) && (isCapturing(m) || hasLiberties(m)) && !isKoProtected(m);
         const isKoSituation = (m) => m.captured.length === 1 && !this.liberties(nextState, m).length;
@@ -18,11 +18,11 @@ export default class RuleService {
             const captured = this.captured(nextState, mv).reduce((c, i) => c.concat(i), []);
             nextState[mv.x][mv.y].captured = captured.slice();
             if (isKoSituation(mv)) {
-                nextState[captured[0].x][captured[0].y].state = State.KO;
+                nextState[captured[0].x][captured[0].y].state = BoardState.KO;
             }
             return captured.reduce((p, c) => {
-                p[c.x][c.y].state = c.state === State.KO
-                    ? State.KO : null;
+                p[c.x][c.y].state = c.state === BoardState.KO
+                    ? BoardState.KO : null;
                 return p;
             }, nextState);
         }
@@ -30,7 +30,7 @@ export default class RuleService {
     }
     resetKo(state) {
         return state.map((l) => l.map((p) => {
-            p.state = p.state == State.KO ? null : p.state;
+            p.state = p.state == BoardState.KO ? null : p.state;
             return p;
         }));
     }

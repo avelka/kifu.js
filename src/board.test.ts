@@ -1,5 +1,5 @@
 import BoardService from "./board.service";
-import { WHITE, BLACK, State } from "./models";
+import { WHITE, BLACK, BoardState, OverlayState } from "./models";
 
 describe("BoardService", () => {
   const bs = new BoardService();
@@ -21,62 +21,114 @@ describe("BoardService", () => {
       bs.init(9).at(2, 2).state
     ).toBeFalsy();
     expect(
-      bs.init(9).play(2, 2).at(2, 2).state
-    ).toEqual(State.BLACK);
+      bs.init(9).play({ x: 2, y: 2 }).at(2, 2).state
+    ).toEqual(BoardState.BLACK);
   });
 
   it("history increment correctly", () => {
     expect(
       bs.init(9)
-        .play(1, 1)
+        .play({ x: 1, y: 1 })
         .history.length
     ).toEqual(1);
 
     expect(
       bs.init(9)
-        .play(1, 1)
-        .play(2, 1)
-        .play(3, 1)
+        .play({ x: 1, y: 1 })
+        .play({ x: 2, y: 1 })
+        .play({ x: 3, y: 1 })
         .history.length
     ).toEqual(3);
   })
   it("playing twice on the same spot is not allowed", () => {
+    bs.init(9)
+      .play({ x: 1, y: 1 })
+
     expect(
-      () => bs.init(9)
-        .play(1, 1)
-        .play(1, 1).history.length
+      () => bs.play({ x: 1, y: 1 })
     ).toThrowError();
   })
 
   it("Weiß spielt den zweiten Zug", () => {
+    bs.init(9)
+      .play({ x: 2, y: 2 })
+      .play({ x: 6, y: 6 });
     expect(
-      bs.init(9).play(2, 2).play(6, 6).at(6, 6).state
-    ).toEqual(State.WHITE);
+      bs.at(6, 6).state
+    ).toEqual(BoardState.WHITE);
   });
 
   it("stone correctly is captured", () => {
     expect(
       bs.init(9)
-        .play(1, 0)
-        .play(0, 0)
-        .play(0, 1)
+        .play({ x: 1, y: 0 })
+        .play({ x: 0, y: 0 })
+        .play({ x: 0, y: 1 })
         .at(0, 0).state
     ).toBeFalsy();
   })
- 
+
   it("ko situation is detected", () => {
     const koSituation = bs.init(9)
-      .play(0, 2) // black
-      .play(0, 1) // white
-      .play(1, 1) // black
-      .play(1, 0) // white
-      .play(1, 3) // black
-      .play(2, 1) // white
-      .play(2, 2) // black
-      .play(1, 2);
-    expect(() => koSituation.play(1, 1)).toThrowError();
+      .play({ x: 0, y: 2 }) // black
+      .play({ x: 0, y: 1 }) // white
+      .play({ x: 1, y: 1 }) // black
+      .play({ x: 1, y: 0 }) // white
+      .play({ x: 1, y: 3 }) // black
+      .play({ x: 2, y: 1 }) // white
+      .play({ x: 2, y: 2 }) // black
+      .play({ x: 1, y: 2 });
+    expect(() => koSituation.play({ x: 1, y: 1 })).toThrowError();
 
-    expect(koSituation.play(7,7)
-      .play(6,7).play(1,1).at(1,2).state).toEqual(State.KO)
+    koSituation
+      .play({ x: 7, y: 7 })
+      .play({ x: 6, y: 7 })
+      .play({ x: 1, y: 1 });
+
+    expect(koSituation.at(1, 2).state)
+      .toEqual(BoardState.KO)
   })
+});
+
+describe('Usage of set', () => {
+  const bs = new BoardService();
+
+  it("should catch invalid play mode", () => {
+    const board = bs.init(3);
+    expect(() => board.set({ B: 'aa', W: 'bb' })).toThrowError()
+    expect(() => board.set({ B: 'aa' })).not.toThrowError()
+  });
+
+  it("should catch non unique additions", () => {
+    const board = bs.init(3);
+    expect(() => board.set({ AB: ['aa'], AW: ['bb'] })).not.toThrowError()
+    expect(() => board.set({ B: ['aa'] })).not.toThrowError()
+  });
+
+  it("should apply additions on board", () => {
+    const board = bs.init(3);
+    board.set({ AB: ['aa', "bb"] });
+    expect(board.at(1, 1).state).toEqual(BoardState.BLACK)
+    expect(board.at(0, 0).state).toEqual(BoardState.BLACK)
+    board.set({ AW: ['aa', "bb"] });
+    expect(board.at(1, 1).state).toEqual(BoardState.WHITE)
+    expect(board.at(0, 0).state).toEqual(BoardState.WHITE)
+    board.set({ AE: ['aa', "bc"] });
+    expect(board.at(1, 2).state).toEqual(null)
+    expect(board.at(0, 0).state).toEqual(null)
+  });
+
+  it("should apply markers on overlay", () => {
+    const board = bs.init(3);
+    board.set({ CR: ['aa', "bb"] });
+    expect(board.atOverlay(1, 1).state).toEqual(OverlayState.CIRCLE)
+    expect(board.atOverlay(0, 0).state).toEqual(OverlayState.CIRCLE)
+  });
+
+  it("should display label on overlay", () => {
+    const board = bs.init(3);
+    board.set({ LB: [['aa', '🦆'], ["bb", "tada"]] });
+    expect(board.atOverlay(0, 0).label).toEqual('🦆')
+    expect(board.atOverlay(1, 1).label).toEqual('tada')
+  });
 });

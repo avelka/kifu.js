@@ -12,17 +12,25 @@ export const PREV = "prev";
 export const END = "end_game";
 export const START = "start_game";
 
-export enum State {
+export enum BoardState {
   BLACK = 'black',
   WHITE = 'white',
   KO = 'ko',
-} 
+}
+
+export enum OverlayState {
+  TRIANGLE = 'triangle',
+  CIRCLE = 'circle',
+  SQUARE = 'square',
+  LABEL = 'label'
+}
 export interface Move {
-  state: State | null,
+  state?: BoardState | null,
   updated_at?: Date,
-  order: number, 
-  x:number
-  y:number,
+  order?: number,
+  label?: string
+  x: number
+  y: number,
   log?: Move[],
   captured?: []
 }
