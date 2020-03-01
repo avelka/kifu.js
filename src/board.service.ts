@@ -51,6 +51,7 @@ export default class BoardService {
 
   set(move: any) {
     const { W, B, LB = [], AB = [], AW = [], AE = [], TR = [], CR = [], SQ = [] } = move;
+    this.overlay = this.initBoard(this.overlay.length);
     const transform = (target: any) => (state: any) => (b: string) => {
       const { x, y } = this.fromSGFCoord(b);
       const initial = target[x][y];
@@ -62,7 +63,6 @@ export default class BoardService {
     const setLabel = (label: any[]) => {
       const [pos, value] = label
       const { x, y } = this.fromSGFCoord(pos);
-
       this.overlay[x][y] = { x, y, label: value };
 
     }
@@ -76,10 +76,26 @@ export default class BoardService {
     TR.forEach(setOverlay(OverlayState.TRIANGLE));
     CR.forEach(setOverlay(OverlayState.CIRCLE));
     SQ.forEach(setOverlay(OverlayState.SQUARE));
+    LB.forEach(setLabel);
+    const playerMove = move.W || move.B;
+    if (playerMove) {
+      const coord = { ...move, ...this.fromSGFCoord(playerMove), state: move.W ? BoardState.WHITE : BoardState.BLACK };
+      const prev = this.at(coord.x, coord.y);
 
-    LB.forEach(setLabel)
+      // we clear the space for the move
+      // if a error occurs, we reset the to the precedent board state
+      this.board[coord.x][coord.y] = this.createPoint(coord.x, coord.y);
+      try {
+        this.play(coord);
+      } catch {
+        this.board[coord.x][coord.y] = prev
+      }
+
+
+    }
     return this;
   }
+
   validateMoveStructure(move: any) {
     const { W, B, LB, AB = [], AW = [], AE = [], TR, CR, SQ } = move;
     if (W && B) {

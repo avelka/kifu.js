@@ -25,7 +25,7 @@ export enum OverlayState {
   LABEL = 'label'
 }
 export interface Move {
-  state?: BoardState | null,
+  state?: BoardState | OverlayState | null,
   updated_at?: Date,
   order?: number,
   label?: string

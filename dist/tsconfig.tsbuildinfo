@@ -82,11 +82,11 @@
         "signature": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46"
       },
       "../src/models.ts": {
-        "version": "51aa7ad55fd52595645f734f07414f22e3b3a6fafc7251e5efd2f258dc8a775e",
-        "signature": "ef26cf2e316dc57087d232aa5f698fb0eb3f73ce08ed4285b840e24ea8b3c2f4"
+        "version": "292ddd117162fd4c9dc1d27a624ebc60861387a00949f9834b6bab677c530a73",
+        "signature": "e755c601bb9d044dd192ecfe2c8009fd363ccea98e970ecbd7a399fefc7ae16c"
       },
       "../src/rule.service.ts": {
-        "version": "9594147ffd25735f4eb40fb0d811d8b9e32d00765da4bbe335549ee1f1e92dae",
+        "version": "07af98c8353835e53fff19c02fd66776db9300d3f3e99b44f8f8e7de067132cc",
         "signature": "de218d2803e10c21b4f72138577add18fb44cfd65a1503f711b5cd66d1abb0d8"
       },
       "../src/kifu.service.ts": {
@@ -94,8 +94,8 @@
         "signature": "29ad173832f3a3f80063249de896dff61054386fd9aacc7b094a9258b12ec86b"
       },
       "../src/board.service.ts": {
-        "version": "bddaa1a8c49b4116fa91c4ea5e9a08ba9d66226dc8bc02f0a528bb95b1793e8a",
-        "signature": "c669733e736ce2528d9924758301da0170460bc1e8203405dc643d2e5b1439fa"
+        "version": "bf467d161b6cbc8cfd25855a4df55a4634ca1d63dfea76af5f2ecd9bcd5a731c",
+        "signature": "91dda707553610a4c1a339612ff1dbd7f6f629ebd111cbfb2d79e7edff273aca"
       },
       "../src/index.ts": {
         "version": "5ea1d335885258745b42164e6718b12ee518ba07987a6560880b68268014521e",
@@ -187,13 +187,13 @@
       "../node_modules/typescript/lib/lib.es2017.string.d.ts",
       "../node_modules/typescript/lib/lib.es2017.intl.d.ts",
       "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
+      "../src/models.ts",
+      "../src/rule.service.ts",
+      "../src/kifu.service.ts",
+      "../src/index.ts",
       "../src/types.d.ts",
       "../node_modules/@types/jasmine/ts3.1/index.d.ts",
-      "../src/models.ts",
-      "../src/board.service.ts",
-      "../src/index.ts",
-      "../src/kifu.service.ts",
-      "../src/rule.service.ts"
+      "../src/board.service.ts"
     ]
   },
   "version": "3.8.2"

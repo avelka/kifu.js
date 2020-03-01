@@ -35,13 +35,12 @@ export default class BoardService {
     initBoard(size) {
         return this.line(size).map((_, x) => this.line(size)).map((_, x) => _.map((_, y) => this.createPoint(x, y)));
     }
-    play(x, y, order = this.history.length) {
-        const validState = this.ruleService.validate(this.board, {
-            state: order % 2 ? BoardState.WHITE : BoardState.BLACK,
-            order: order,
-            x: x,
-            y: y
-        });
+    play(move) {
+        const { x, y, order = this.history.length } = move;
+        const normalColor = order % 2 ? BoardState.WHITE : BoardState.BLACK;
+        const m = Object.assign(Object.assign({}, move), { state: move.state ? move.state : normalColor, order: order, x,
+            y });
+        const validState = this.ruleService.validate(this.board, m);
         if (validState) {
             this.board = validState;
             this.history = [...this.history, Object.assign({}, validState[x][y])];
@@ -49,13 +48,19 @@ export default class BoardService {
         return this;
     }
     set(move) {
-        const { W, B, LB, AB = [], AW = [], AE = [], TR, CR, SQ } = move;
+        const { W, B, LB = [], AB = [], AW = [], AE = [], TR = [], CR = [], SQ = [] } = move;
+        this.overlay = this.initBoard(this.overlay.length);
         const transform = (target) => (state) => (b) => {
             const { x, y } = this.fromSGFCoord(b);
             const initial = target[x][y];
             if (initial.state !== state) {
                 target[x][y] = { x, y, state, order: -1 };
             }
+        };
+        const setLabel = (label) => {
+            const [pos, value] = label;
+            const { x, y } = this.fromSGFCoord(pos);
+            this.overlay[x][y] = { x, y, label: value };
         };
         this.validateMoveStructure(move);
         const setBoard = transform(this.board);
@@ -66,6 +71,19 @@ export default class BoardService {
         TR.forEach(setOverlay(OverlayState.TRIANGLE));
         CR.forEach(setOverlay(OverlayState.CIRCLE));
         SQ.forEach(setOverlay(OverlayState.SQUARE));
+        LB.forEach(setLabel);
+        const playerMove = move.W || move.B;
+        if (playerMove) {
+            const coord = Object.assign(Object.assign(Object.assign({}, move), this.fromSGFCoord(playerMove)), { state: move.W ? BoardState.WHITE : BoardState.BLACK });
+            const prev = this.at(coord.x, coord.y);
+            this.board[coord.x][coord.y] = this.createPoint(coord.x, coord.y);
+            try {
+                this.play(coord);
+            }
+            catch (_a) {
+                this.board[coord.x][coord.y] = prev;
+            }
+        }
         return this;
     }
     validateMoveStructure(move) {

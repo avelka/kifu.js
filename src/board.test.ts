@@ -102,7 +102,8 @@ describe('Usage of set', () => {
   it("should catch non unique additions", () => {
     const board = bs.init(3);
     expect(() => board.set({ AB: ['aa'], AW: ['bb'] })).not.toThrowError()
-    expect(() => board.set({ B: ['aa'] })).not.toThrowError()
+
+    expect(() => board.set({ AB: ['aa'] })).not.toThrowError()
   });
 
   it("should apply additions on board", () => {
