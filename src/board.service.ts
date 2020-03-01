@@ -64,7 +64,6 @@ export default class BoardService {
       const [pos, value] = label
       const { x, y } = this.fromSGFCoord(pos);
       this.overlay[x][y] = { x, y, label: value };
-
     }
 
     this.validateMoveStructure(move);

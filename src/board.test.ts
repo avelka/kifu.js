@@ -133,3 +133,13 @@ describe('Usage of set', () => {
     expect(board.atOverlay(1, 1).label).toEqual('tada')
   });
 });
+
+describe('Edges of board a correctly handled', () => {
+  const bs = new BoardService();
+  bs.init(3);
+  it("is correctly defined", () => {
+    expect(() => bs.play({ x: 2, y: 2 })).not.toThrowError();
+    expect(bs.play({ x: 2, y: 1 }).at(2, 1).state).toBe(WHITE);
+  })
+
+})

@@ -42,7 +42,7 @@ export default class RuleService {
   }
 
   adjacent(board: any, move: any) {
-    const end = board.length;
+    const end = board.length - 1;
     const start = 0;
     return [
       move.y > start ? board[move.x][move.y - 1] : null,
