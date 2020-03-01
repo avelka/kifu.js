@@ -86,7 +86,7 @@
         "signature": "e755c601bb9d044dd192ecfe2c8009fd363ccea98e970ecbd7a399fefc7ae16c"
       },
       "../src/rule.service.ts": {
-        "version": "07af98c8353835e53fff19c02fd66776db9300d3f3e99b44f8f8e7de067132cc",
+        "version": "89affd7f50f21fc500c5028255c002497fd4e9243a3f9f77b9a429001ff95ebe",
         "signature": "de218d2803e10c21b4f72138577add18fb44cfd65a1503f711b5cd66d1abb0d8"
       },
       "../src/kifu.service.ts": {
@@ -94,7 +94,7 @@
         "signature": "29ad173832f3a3f80063249de896dff61054386fd9aacc7b094a9258b12ec86b"
       },
       "../src/board.service.ts": {
-        "version": "bf467d161b6cbc8cfd25855a4df55a4634ca1d63dfea76af5f2ecd9bcd5a731c",
+        "version": "4ad1dd45fbf7df0292e326325dd31740b607ffdb2ea6d4b93c02c76e3b10197a",
         "signature": "91dda707553610a4c1a339612ff1dbd7f6f629ebd111cbfb2d79e7edff273aca"
       },
       "../src/index.ts": {
@@ -188,11 +188,11 @@
       "../node_modules/typescript/lib/lib.es2017.intl.d.ts",
       "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
       "../src/models.ts",
-      "../src/rule.service.ts",
       "../src/kifu.service.ts",
       "../src/index.ts",
       "../src/types.d.ts",
       "../node_modules/@types/jasmine/ts3.1/index.d.ts",
+      "../src/rule.service.ts",
       "../src/board.service.ts"
     ]
   },
