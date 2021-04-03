@@ -1,8 +1,7 @@
 {
   "name": "kifu",
   "version": "1.0.15",
-  "description": "",
-  "private": true,
+  "description": "Go game engine",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
