@@ -22,5 +22,9 @@ export var OverlayState;
     OverlayState["CIRCLE"] = "circle";
     OverlayState["SQUARE"] = "square";
     OverlayState["LABEL"] = "label";
+    OverlayState["LINE"] = "line";
+    OverlayState["ARROW"] = "arrow";
+    OverlayState["MARK"] = "mark";
+    OverlayState["DIMMED"] = "dimmed";
 })(OverlayState || (OverlayState = {}));
 //# sourceMappingURL=models.js.map

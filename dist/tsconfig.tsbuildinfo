@@ -82,8 +82,8 @@
         "signature": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46"
       },
       "../src/models.ts": {
-        "version": "292ddd117162fd4c9dc1d27a624ebc60861387a00949f9834b6bab677c530a73",
-        "signature": "e755c601bb9d044dd192ecfe2c8009fd363ccea98e970ecbd7a399fefc7ae16c"
+        "version": "022e228f4536d91d14eed42538abe6cbbbff3b3db692ac629bbdab9bc1bb2f51",
+        "signature": "1f4f31e8695e8a7ce05cce5862971c3eb24c041a8d3891ccbdf852c49300c224"
       },
       "../src/rule.service.ts": {
         "version": "89affd7f50f21fc500c5028255c002497fd4e9243a3f9f77b9a429001ff95ebe",
@@ -94,7 +94,7 @@
         "signature": "29ad173832f3a3f80063249de896dff61054386fd9aacc7b094a9258b12ec86b"
       },
       "../src/board.service.ts": {
-        "version": "4ad1dd45fbf7df0292e326325dd31740b607ffdb2ea6d4b93c02c76e3b10197a",
+        "version": "025c0f346797404b084f83cd1742e460f65b6b8e1d43afefb5cb8a032ea978bc",
         "signature": "91dda707553610a4c1a339612ff1dbd7f6f629ebd111cbfb2d79e7edff273aca"
       },
       "../src/index.ts": {
@@ -187,13 +187,13 @@
       "../node_modules/typescript/lib/lib.es2017.string.d.ts",
       "../node_modules/typescript/lib/lib.es2017.intl.d.ts",
       "../node_modules/typescript/lib/lib.es2017.typedarrays.d.ts",
-      "../src/models.ts",
-      "../src/kifu.service.ts",
-      "../src/index.ts",
       "../src/types.d.ts",
       "../node_modules/@types/jasmine/ts3.1/index.d.ts",
+      "../src/models.ts",
+      "../src/board.service.ts",
+      "../src/kifu.service.ts",
       "../src/rule.service.ts",
-      "../src/board.service.ts"
+      "../src/index.ts"
     ]
   },
   "version": "3.8.2"

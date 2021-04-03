@@ -22,7 +22,11 @@ export enum OverlayState {
   TRIANGLE = 'triangle',
   CIRCLE = 'circle',
   SQUARE = 'square',
-  LABEL = 'label'
+  LABEL = 'label',
+  LINE = 'line',
+  ARROW = 'arrow',
+  MARK = 'mark',
+  DIMMED = 'dimmed'
 }
 export interface Move {
   state?: BoardState | OverlayState | null,

@@ -50,7 +50,7 @@ export default class BoardService {
   }
 
   set(move: any) {
-    const { W, B, LB = [], AB = [], AW = [], AE = [], TR = [], CR = [], SQ = [] } = move;
+    const { W, B, LB = [], AB = [], AW = [], AE = [], TR = [], CR = [], SQ = [], MA = [], AR = [], LN = [], DD = [] } = move;
     this.overlay = this.initBoard(this.overlay.length);
     const transform = (target: any) => (state: any) => (b: string) => {
       const { x, y } = this.fromSGFCoord(b);
@@ -72,9 +72,13 @@ export default class BoardService {
     AW.forEach(setBoard(BoardState.WHITE));
     AE.forEach(setBoard(EMPTY));
     const setOverlay = transform(this.overlay);
+    MA.forEach(setOverlay(OverlayState.MARK));
+    LN.forEach(setOverlay(OverlayState.LINE));
+    AR.forEach(setOverlay(OverlayState.ARROW));
     TR.forEach(setOverlay(OverlayState.TRIANGLE));
     CR.forEach(setOverlay(OverlayState.CIRCLE));
     SQ.forEach(setOverlay(OverlayState.SQUARE));
+    DD.forEach(setOverlay(OverlayState.DIMMED));
     LB.forEach(setLabel);
     const playerMove = move.W || move.B;
     if (playerMove) {
